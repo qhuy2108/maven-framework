@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Facebook_Undisplayed">
+
+    <parameter name="url" value="https://live.techpanda.org/"></parameter>
+
+    <listeners>
+        <listener class-name="commons.MethodListener"></listener>
+    </listeners>
+
+
+    <test name="Run on Firefox browser">
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="com.facebook.cases.Level_18_Undisplayed" />
+            <!--<class name="com.nopcommerce.users.Level_04_Multiple_Browser" />-->
+        </classes>
+    </test>
+
+
+
+
+
+
+
+
+    <!--<test name="Run on Edge browser">
+        <parameter name="browser" value="edge"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />
+        </classes>
+    </test>
+    <test name="Run on Chrome browser">
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />
+        </classes>
+    </test>-->
+
+</suite>

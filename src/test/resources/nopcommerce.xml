@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Nopcommerce">
+
+    <parameter name="userUrl" value="https://demo.nopcommerce.com/"></parameter>
+    <parameter name="adminUrl" value="https://admin-demo.nopcommerce.com/"></parameter>
+    
+    <listeners>
+        <listener class-name="commons.MethodListener"></listener>
+<!--        <listener class-name="jiraConfig.JiraListener"></listener>-->
+<!--        <listener class-name="reportConfig.ExtentListener"></listener>-->
+
+    </listeners>
+
+
+    <test name="Run on Firefox browser" preserve-order="true" >
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="com.nopcommerce.commons.Level_20_Share_States_Login" />
+            <class name="com.nopcommerce.users.Level_20_Share_States_close_Browser_Driver" />
+        </classes>
+    </test>
+
+
+
+
+
+    <!--<test name="Run on Edge browser">
+        <parameter name="browser" value="edge"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />
+        </classes>
+    </test>
+    <test name="Run on Chrome browser">
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />
+        </classes>
+    </test>-->
+
+</suite>

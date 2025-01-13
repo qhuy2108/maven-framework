@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Runfile">
+
+    <parameter name="userUrl" value="https://demo.nopcommerce.com/"></parameter>
+
+    <test name="Run on Firefox browser">
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_13_Assert" />
+        </classes>
+    </test>
+
+<!--    <test name="Run on Firefox browser">-->
+<!--        <parameter name="browser" value="firefox"></parameter>-->
+<!--        <classes>-->
+<!--            <class name="com.nopcommerce.users.Level_13_Assert" />-->
+<!--        </classes>-->
+<!--    </test>-->
+
+</suite>
