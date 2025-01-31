@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="none" name="SauceLab - Web Automation UI" >
+
+<!--    <parameter name="server" value="dev" />-->
+
+<!--    <listeners>-->
+<!--                <listener class-name="commons.MethodListener"></listener>-->
+<!--    </listeners>-->
+
+    <test name="Run on Firefox browser">
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_31_Enviroment_04_Owner" />
+        </classes>
+    </test>
+
+<!--    <test name="Run on Edge browser">-->
+<!--        <parameter name="browser" value="edge"></parameter>-->
+<!--        <classes>-->
+<!--            <class name="com.nopcommerce.users.Level_23_FakerDataTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
+
+</suite>

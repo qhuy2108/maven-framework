@@ -2,7 +2,6 @@ package commons;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,7 +13,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
 import java.io.IOException;
@@ -93,6 +91,55 @@ public class BaseTest {
         driver.get(url);
         return driver;
     }
+
+    protected WebDriver getBrowserEnviroment(String browserName, String serverName){
+        BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+
+        switch (browserList){
+            case FIREFOX:
+                driver = new FirefoxDriver();
+                break;
+            case EDGE:
+                driver = new EdgeDriver();
+                break;
+            case CHROME:
+                driver = new ChromeDriver();
+                break;
+            default:
+                throw new RuntimeException("Browser name is not valid.");
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.manage().window().setSize(new Dimension(1600,960));
+        driver.get(getUrlByServerName(serverName));
+        return driver;
+    }
+
+    private String getUrlByServerName(String serverName) {
+        String url = null;
+        ServerList server = ServerList.valueOf(serverName.toUpperCase());
+
+        switch (server) {
+            case DEV: {
+                url = "https://demo.nopcommerce.com/";
+                break;
+            }
+            case TEST: {
+                url = "https://test.nopcommerce.com/";
+                break;
+            }
+            case STAGING: {
+                url = "https://staging.nopcommerce.com/";
+                break;
+            }
+            default:
+                new IllegalArgumentException("Unexpected value: " + serverName);
+        }
+        return url;
+    }
+
+
+
 
     protected void assertTrue(boolean condition) {
         Assert.assertTrue(VerifyTrue(condition));
@@ -219,6 +266,17 @@ public class BaseTest {
     public int getRandomNumber() {
         return new Random().nextInt(9999);
     }
+
+    protected String getEmailRandom(){
+        Random random = new Random();
+        return "Micheal" + random.nextInt(99999) + "@hotmail.uss";
+    }
+
+    protected String getEmailRandom(String prefix){
+        Random random = new Random();
+        return prefix + random.nextInt(99999) + "@hotmail.uss";
+    }
+
     public void sleepInSecond(long timeInSecond) {
         try {
             Thread.sleep(timeInSecond * 1000);
